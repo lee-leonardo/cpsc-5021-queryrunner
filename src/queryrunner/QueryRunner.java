@@ -197,7 +197,7 @@ public class QueryRunner {
 
                 // TODO pass the
                 QueryConsole.main(args, queryrunner);
-
+                queryrunner.Disconnect();
 
                 /* CLI tool to add all the gui elements,
                  * then show menu
@@ -242,7 +242,7 @@ public class QueryRunner {
                 //               print out all the results
                 //           end if
                 //      }
-                //    Disconnect()
+
 
 
                 // NOTE - IF THERE ARE ANY ERRORS, please print the Error output

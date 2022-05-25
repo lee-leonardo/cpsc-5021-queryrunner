@@ -1,9 +1,14 @@
 package queryrunner;
 
+import java.util.Scanner;
+
 public class QueryConsole {
     private QueryRunner runner;
 
     public static void main(String[] args, QueryRunner runner) {
+        Scanner userIn = new Scanner(System.in);
+
+        connectPrompt(userIn, runner);
 
         /* CLI tool to add all the gui elements,
          * then show menu
@@ -58,8 +63,16 @@ public class QueryConsole {
 
     }
 
-    public static void connectPrompt(QueryRunner runner) {
-//        runner.Connect();
+    public static void connectPrompt(Scanner userIn, QueryRunner runner) {
+        // TODO work on the cli tool that prompts and gets the user params.
+        String host, user, pass, database;
+
+        host = userIn.nextLine().trim();
+        user = userIn.nextLine().trim();
+        pass = userIn.nextLine().trim();
+        database = userIn.nextLine().trim();
+
+        runner.Connect(host, user, pass, database);
     }
 
 
