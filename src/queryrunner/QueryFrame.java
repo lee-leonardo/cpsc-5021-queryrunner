@@ -232,10 +232,10 @@ public class QueryFrame extends javax.swing.JFrame {
         boolean  bOK=true; 
         jTextArea2.setText("");      
         
-        if (jConnectButton.getText() == "Connect")
+        if (jConnectButton.getText().equals("Connect"))
         {            
             bOK = m_queryrunner.Connect(this.jTextHostname.getText(), this.jTextFieldUser.getText(), String.valueOf(this.jPasswordField1.getPassword()), this.jTextFieldDatabase.getText());
-           if (bOK == true)
+           if (bOK)
            {
                jConnectButton.setText("Disconnect");    
                jComboBoxQuery.setEnabled(true);
@@ -245,7 +245,7 @@ public class QueryFrame extends javax.swing.JFrame {
         else
         {
            bOK = m_queryrunner.Disconnect();
-           if (bOK == true)
+           if (bOK)
            {
                jConnectButton.setText("Connect");
                jComboBoxQuery.setEnabled(true);
@@ -253,7 +253,7 @@ public class QueryFrame extends javax.swing.JFrame {
            }
         }
         
-        if (bOK == false)
+        if (!bOK)
         {
             this.jTextArea2.setText(m_queryrunner.GetError());
         }       

@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class QueryRunner {
 
-    
+
     public QueryRunner()
     {
         this.m_jdbcData = new QueryJDBC();
@@ -194,6 +194,22 @@ public class QueryRunner {
         {
             if (args[0].equals ("-console"))
             {
+
+                // TODO pass the
+                QueryConsole.main(args, queryrunner);
+
+
+                /* CLI tool to add all the gui elements,
+                 * then show menu
+                 * add new parameters
+                 * prompt for data, these data will be then used to the 'routine'
+                 * these routines are partially filled sql queries or stored procedures.
+                 *
+                 * Data structure and code will grab the parameters needed for the sql query
+                 * underneath.
+                 *
+                 */
+
             	System.out.println("Nothing has been implemented yet. Please implement the necessary code");
                // TODO 
                 // You should code the following functionality:
