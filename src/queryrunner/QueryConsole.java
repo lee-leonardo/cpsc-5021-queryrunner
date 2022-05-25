@@ -67,9 +67,19 @@ public class QueryConsole {
         // TODO work on the cli tool that prompts and gets the user params.
         String host, user, pass, database;
 
+        System.out.println("We need to establish a connection to the database");
+        System.out.print("Enter the hostname (localhost?): ");
         host = userIn.nextLine().trim();
+
+        System.out.print("Enter the username (root, etc.): ");
         user = userIn.nextLine().trim();
+
+        System.out.print("Enter the password: ");
         pass = userIn.nextLine().trim();
+
+        System.out.print(
+                "Enter the database you wish to use (mm_cpsc502101team05): "
+        );
         database = userIn.nextLine().trim();
 
         runner.Connect(host, user, pass, database);
