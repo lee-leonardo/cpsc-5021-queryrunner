@@ -341,7 +341,7 @@ public class QueryFrame extends javax.swing.JFrame {
         if (this.m_queryrunner.isActionQuery(m_queryChoice))    
         {
             bOK = m_queryrunner.ExecuteUpdate(m_queryChoice, parmstring);
-            if (bOK == true)
+            if (bOK)
             {
                 this.jTextArea2.setText(("Rows affected = " + m_queryrunner.GetUpdateAmount()));
             }
@@ -353,7 +353,7 @@ public class QueryFrame extends javax.swing.JFrame {
         else
         {
             bOK = m_queryrunner.ExecuteQuery(m_queryChoice, parmstring);
-            if (bOK ==true)
+            if (bOK)
             {
                 headers = m_queryrunner.GetQueryHeaders();
                 allData = m_queryrunner.GetQueryData();

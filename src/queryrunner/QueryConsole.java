@@ -2,6 +2,9 @@ package queryrunner;
 
 import java.util.Scanner;
 
+/**
+ * CLI tool we've been building in all of our other classes.
+ */
 public class QueryConsole {
     private QueryRunner runner;
 
@@ -14,7 +17,7 @@ public class QueryConsole {
          * then show menu
          * add new parameters
          * prompt for data, these data will be then used to the 'routine'
-         * these routines are partially filled sql queries or stored procedures.
+         * these routines are partially filled s    ql queries or stored procedures.
          *
          * Data structure and code will grab the parameters needed for the sql query
          * underneath.
@@ -83,6 +86,20 @@ public class QueryConsole {
         database = userIn.nextLine().trim();
 
         runner.Connect(host, user, pass, database);
+    }
+
+    public static void selectQuery(Scanner userIn, QueryRunner runner) {}
+
+    public static void executeQuery(Scanner userIn, QueryRunner runner) {
+
+    }
+
+    public static void selectUpdate(Scanner userIn, QueryRunner runner) {
+
+    }
+
+    public static void executeUpdate(Scanner userIn, QueryRunner runner) {
+
     }
 
 

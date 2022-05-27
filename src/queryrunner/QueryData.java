@@ -8,6 +8,9 @@ package queryrunner;
 import java.util.ArrayList;
 
 /**
+ * This is the area where we data like parameter arguments, the runner uses
+ * this data to dynamically create the 'cli' style queries and etc.
+ *
  *
  * @author mckeem
  */
