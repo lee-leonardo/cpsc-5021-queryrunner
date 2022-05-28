@@ -45,7 +45,7 @@ public class QueryRunner {
         //    IsItActionQuery (e.g. Mark it true if it is, otherwise false)
         //    IsItParameterQuery (e.g.Mark it true if it is, otherwise false)
 
-        // TODO - someone replace these with actual queries, test them out with the gui, the cli will be tested by me
+        // TODO -someone replace these with actual queries, test them out with the gui, the cli will be tested by me
         m_queryArray.add(
                 new QueryData(
                         // this is the query string, the ? is going to be replaced fron the array
