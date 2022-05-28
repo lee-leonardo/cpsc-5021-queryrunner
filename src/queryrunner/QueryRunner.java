@@ -191,29 +191,24 @@ public class QueryRunner {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println(QueryConsole.MENU_OPTION.valueOf("query"));
-        System.out.println(QueryConsole.MENU_OPTION.ordinalOf("query"));
-        System.out.println(QueryConsole.MENU_OPTION.query);
-        System.out.println(QueryConsole.MENU_OPTION.query.ordinal());
+        final QueryRunner queryrunner = new QueryRunner();
 
-//        final QueryRunner queryrunner = new QueryRunner();
-//
-//        if (args.length == 0)
-//        {
-//            java.awt.EventQueue.invokeLater(new Runnable() {
-//                public void run() {
-//                    new QueryFrame(queryrunner).setVisible(true);
-//                }
-//            });
-//        }
-//        else
-//        {
-//            if (args[0].equals ("-console"))
-//            {
-//                QueryConsole.main(args, queryrunner);
-//                queryrunner.Disconnect();
-//            }
-//        }
+        if (args.length == 0)
+        {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new QueryFrame(queryrunner).setVisible(true);
+                }
+            });
+        }
+        else
+        {
+            if (args[0].equals ("-console"))
+            {
+                QueryConsole.main(args, queryrunner);
+                queryrunner.Disconnect();
+            }
+        }
  
     }    
 }
