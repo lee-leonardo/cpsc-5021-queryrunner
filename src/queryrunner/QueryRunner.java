@@ -207,6 +207,11 @@ public class QueryRunner
         return m_error;
     }
 
+    public void ClearError()
+    {
+        m_error = null;
+    }
+
     private QueryJDBC m_jdbcData;
     private String m_error;
     private String m_projectTeamApplication;
