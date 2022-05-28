@@ -54,7 +54,7 @@ public class QueryRunner {
                         null,
                         // a list of booleans whether the param is using SQL 'like' command
                         null,
-                        // whether to treat the
+                        // whether to treat as a sql query or update command.
                         false,
                         // whether to use parameter boxes on the GUI or collect parameters in CLI
                         false
@@ -191,24 +191,29 @@ public class QueryRunner {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        final QueryRunner queryrunner = new QueryRunner();
-        
-        if (args.length == 0)
-        {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    new QueryFrame(queryrunner).setVisible(true);
-                }            
-            });
-        }
-        else
-        {
-            if (args[0].equals ("-console"))
-            {
-                QueryConsole.main(args, queryrunner);
-                queryrunner.Disconnect();
-            }
-        }
+        System.out.println(QueryConsole.MENU_OPTION.valueOf("query"));
+        System.out.println(QueryConsole.MENU_OPTION.ordinalOf("query"));
+        System.out.println(QueryConsole.MENU_OPTION.query);
+        System.out.println(QueryConsole.MENU_OPTION.query.ordinal());
+
+//        final QueryRunner queryrunner = new QueryRunner();
+//
+//        if (args.length == 0)
+//        {
+//            java.awt.EventQueue.invokeLater(new Runnable() {
+//                public void run() {
+//                    new QueryFrame(queryrunner).setVisible(true);
+//                }
+//            });
+//        }
+//        else
+//        {
+//            if (args[0].equals ("-console"))
+//            {
+//                QueryConsole.main(args, queryrunner);
+//                queryrunner.Disconnect();
+//            }
+//        }
  
     }    
 }
