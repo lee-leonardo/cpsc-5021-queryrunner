@@ -94,7 +94,7 @@ public class QueryFrame extends javax.swing.JFrame
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
 //        jLabelImg1 = new JLabel(new ImageIcon("C:\\Users\\maste\\Documents\\cpsc-5021-queryrunner\\src\\img2.png"));
-        jLabelImg2 = new JLabel(new ImageIcon("C:\\Users\\maste\\Documents\\cpsc-5021-queryrunner\\src\\img3.jpg"));
+        jLabelImg2 = new JLabel(new ImageIcon("C:\\Users\\maste\\Documents\\forkedrepo\\cpsc-5021-queryrunner\\src\\image5.png"));
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -245,7 +245,7 @@ public class QueryFrame extends javax.swing.JFrame
 
         // add images to pane
 //        getContentPane().add(jLabelImg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 100, 100));
-        getContentPane().add(jLabelImg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+         getContentPane().add(jLabelImg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0,-1,-1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
