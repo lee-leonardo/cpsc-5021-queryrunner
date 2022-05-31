@@ -1,0 +1,19 @@
+movie information
+user's movie lists
+favorite movies
+critic movie reviews
+movie reviews by movie
+movie's by publisher
+number of movies per genre
+number of movies released by month
+Number of movies published by company
+Movie Contributions by Person
+top N movies
+movies per contributor
+NumberOfMoveiesPublishedByCompany
+GetTop10Movies
+MovieReviewsAndRatings
+Add Movie Review
+Add new User
+Update User info
+Search for User
