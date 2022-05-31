@@ -10,9 +10,6 @@ select p.publisher_company, count(m.movie_name) as NumberMoviesPerCompany from M
 select Person.person_id, pseudonym, first_name, last_name, contribution_title, role_title from Person, PersonMovieContribution, RoleTag where Person.person_id = PersonMovieContribution.person_id  and PersonMovieContribution.role_id = RoleTag.role_id;
 select movie_id, movie_name, avg(movie_rating) as movie_avg_rating  from MovieReview  join Movie using(movie_id)  group by movie_id  order by movie_avg_rating desc  limit ?;
 select person_id, first_name, last_name, nationality, count(movie_id) as Movies from PersonMovieContribution join Person  using(person_id) group by person_id order by Movies desc;
-CALL NumberOfMoveiesPublishedByCompany(?);
-CALL GetTop10Movies();
-CALL MovieReviewsAndRatings();
 insert into MovieReview (review_id, movie_id, critic_id, movie_rating, review_title, review_body, publish_date) values ((SELECT max(review_id) FROM MovieReview) + 1, ?,?,?,?,?,now());
 insert into User (last_name, first_name, user_name) values (?, ?, ?);
 update User set last_name = ?, first_name = ? where user_name = ?;
