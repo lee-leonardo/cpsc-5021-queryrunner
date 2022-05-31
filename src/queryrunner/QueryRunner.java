@@ -6,9 +6,7 @@
 package queryrunner;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -48,28 +46,8 @@ public class QueryRunner
         //    IsItActionQuery (e.g. Mark it true if it is, otherwise false)
         //    IsItParameterQuery (e.g.Mark it true if it is, otherwise false)
 
-        // TODO - someone replace these with actual queries, test them out with the gui, the cli will be tested by me
         m_queryArray = readQueries();
         m_queryArrayDescription = readQueriesDescriptions();
-//                (
-//                new QueryData(
-//                        // this is the query string, the ? is going to be replaced fron the array
-//                        "Select * from contact",
-//                        // params an array of strings
-//                        null,
-//                        // a list of booleans whether the param is using SQL 'like' command
-//                        null,
-//                        // whether to treat the
-//                        false,
-//                        // whether to use parameter boxes on the GUI or collect parameters in CLI
-//                        false
-//                )
-//        );
-//        m_queryArray.add(new QueryData("Select * from contact", null, null, false, false));   // THIS NEEDS TO CHANGE FOR YOUR APPLICATION
-//        m_queryArray.add(new QueryData("Select * from contact where contact_id=?", new String[]{"CONTACT_ID"}, new boolean[]{false}, false, true));        // THIS NEEDS TO CHANGE FOR YOUR APPLICATION
-//        m_queryArray.add(new QueryData("Select * from contact where contact_name like ?", new String[]{"CONTACT_NAME"}, new boolean[]{true}, false, true));        // THIS NEEDS TO CHANGE FOR YOUR APPLICATION
-//        m_queryArray.add(new QueryData("insert into contact (contact_id, contact_name, contact_salary) values (?,?,?)", new String[]{"CONTACT_ID", "CONTACT_NAME", "CONTACT_SALARY"}, new boolean[]{false, false, false}, true, true));// THIS NEEDS TO CHANGE FOR YOUR APPLICATION
-
     }
 
     public ArrayList<QueryData> readQueries() throws IOException
@@ -109,7 +87,7 @@ public class QueryRunner
         return queries;
     }
 
-    public String getQueryDescirption(int index)
+    public String getQueryDescription(int index)
     {
         return m_queryArrayDescription.get(index);
     }
@@ -209,7 +187,7 @@ public class QueryRunner
 
     public boolean Connect(String szHost, String szUser, String szPass, String szDatabase)
     {
-        boolean bConnect = m_jdbcData.ConnectToDatabase("cs100", "mm_cpsc502101team05", "mm_cpsc502101team05Pass-", "mm_cpsc502101team05");
+        boolean bConnect = m_jdbcData.ConnectToDatabase(szHost, szUser, szPass, szDatabase);
         if (bConnect == false)
             m_error = m_jdbcData.GetError();
         return bConnect;

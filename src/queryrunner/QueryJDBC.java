@@ -9,8 +9,6 @@ import java.sql.Connection;
 import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
  * @author mckeem
@@ -19,8 +17,6 @@ import java.util.ArrayList;
 
 public class QueryJDBC
 {
-
-
     public Connection m_conn = null;
     static final String DB_DRV = "com.mysql.jdbc.Driver";
     String m_error = "";
@@ -230,6 +226,7 @@ public class QueryJDBC
     {
         try
         {
+
 
             m_conn.close();
 

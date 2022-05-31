@@ -11,8 +11,6 @@ package queryrunner;
  * @author mckeem
  */
 
-import java.util.ArrayList;
-import java.util.List;
 import java.awt.Color;
 import javax.swing.*;
 
@@ -37,7 +35,7 @@ public class QueryFrame extends javax.swing.JFrame
 
         for (int i=0; i < nAmt; i++)
         {
-            this.jComboBoxQuery.addItem(m_queryrunner.getQueryDescirption(i).trim());
+            this.jComboBoxQuery.addItem(m_queryrunner.getQueryDescription(i).trim());
         }
         jComboBoxQuery.setEnabled(false);
         jBtnRunQuery.setEnabled(false);
@@ -282,7 +280,6 @@ public class QueryFrame extends javax.swing.JFrame
         m_queryChoice = jComboBoxQuery.getSelectedIndex();
         String szQuery = m_queryrunner.GetQueryText(m_queryChoice);
         this.jTextArea1.setText(szQuery);
-        System.out.println("choice is " + jComboBoxQuery.getSelectedItem());
         this.jPanel2.setVisible(false);
 
         if (this.m_queryrunner.isParameterQuery(m_queryChoice))
