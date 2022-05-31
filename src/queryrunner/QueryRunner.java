@@ -25,14 +25,12 @@ public class QueryRunner
     {
         this.m_jdbcData = new QueryJDBC();
         m_updateAmount = 0;
-        m_queryArray = new ArrayList<>();
-        m_queryArrayDescription = new ArrayList<>();
         m_error = "";
 
         this.m_projectTeamApplication = "ReelHype";
+        m_queryParamMap = readQueryParams();
         m_queryArray = readQueries();
         m_queryArrayDescription = readQueriesDescriptions();
-        m_queryParamMap = readQueryParams();
     }
 
     public ArrayList<QueryData> readQueries() throws IOException
