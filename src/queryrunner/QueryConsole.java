@@ -267,9 +267,9 @@ public class QueryConsole {
         System.out.println("-".repeat(15));
 
         for (int i = 0; i < runner.GetTotalQueries(); i++) {
-            String queryText = runner.GetQueryText(i);
+            String queryDesc = runner.getQueryDescription(i);
 
-            System.out.println(i + ": " + queryText.subSequence(0, 10) + "...");
+            System.out.println(i + ": " + queryDesc);
         }
 
         System.out.println("-".repeat(15));
