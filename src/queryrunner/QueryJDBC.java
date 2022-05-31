@@ -232,10 +232,7 @@ public class QueryJDBC
     {
         try
         {
-
-
             m_conn.close();
-
         } catch (SQLException ex)
         {
 

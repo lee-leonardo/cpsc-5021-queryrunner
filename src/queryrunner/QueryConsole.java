@@ -1,5 +1,6 @@
 package queryrunner;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -67,67 +68,14 @@ public class QueryConsole {
 
         // Menu
         while (isContinue(menuOption)) {
-            printMenu();
-            int option = menu(userIn, runner);
+            menuOption = menu(userIn, runner);
 
-            if (option == MENU_OPTION.query.ordinal()) {
+            if (menuOption == MENU_OPTION.query.ordinal()) {
                 queryMenu(userIn, runner);
-            } else if (option == MENU_OPTION.help.ordinal()) {
+            } else if (menuOption == MENU_OPTION.help.ordinal()) {
                 help();
             }
         }
-
-        /* CLI tool to add all the gui elements,
-         * then show menu
-         * add new parameters
-         * prompt for data, these data will be then used to the 'routine'
-         * these routines are partially filled s    ql queries or stored procedures.
-         *
-         * Data structure and code will grab the parameters needed for the sql query
-         * underneath.
-         *
-         */
-
-        System.out.println("Nothing has been implemented yet. Please implement the necessary code");
-        // TODO
-        // You should code the following functionality:
-
-        //    You need to determine if it is a parameter query. If it is, then
-        //    you will need to ask the user to put in the values for the Parameters in your query
-        //    you will then call ExecuteQuery or ExecuteUpdate (depending on whether it is an action query or regular query)
-        //    if it is a regular query, you should then get the data by calling GetQueryData. You should then display this
-        //    output.
-        //    If it is an action query, you will tell how many row's were affected by it.
-        //
-        //    This is Psuedo Code for the task:
-        //    Connect()
-        //    n = GetTotalQueries()
-        //    for (i=0;i < n; i++)
-        //    {
-        //       Is it a query that Has Parameters
-        //       Then
-        //           amt = find out how many parameters it has
-        //           Create a paramter array of strings for that amount
-        //           for (j=0; j< amt; j++)
-        //              Get The Paramater Label for Query and print it to console. Ask the user to enter a value
-        //              Take the value you got and put it into your parameter array
-        //           If it is an Action Query then
-        //              call ExecuteUpdate to run the Query
-        //              call GetUpdateAmount to find out how many rows were affected, and print that value
-        //           else
-        //               call ExecuteQuery
-        //               call GetQueryData to get the results back
-        //               print out all the results
-        //           end if
-        //      }
-
-        // NOTE - IF THERE ARE ANY ERRORS, please print the Error output
-        // NOTE - The QueryRunner functions call the various JDBC Functions that are in QueryJDBC. If you would rather code JDBC
-        // functions directly, you can choose to do that. It will be harder, but that is your option.
-        // NOTE - You can look at the QueryRunner API calls that are in QueryFrame.java for assistance. You should not have to
-        //    alter any code in QueryJDBC, QueryData, or QueryFrame to make this work.
-//                System.out.println("Please write the non-gui functionality");
-
 
         farewell();
     }
@@ -151,7 +99,7 @@ public class QueryConsole {
 
         runner.Connect(host, user, pass, database);
 
-        if (runner.GetError() != null) {
+        if (!runner.GetError().isBlank()) {
             System.out.println("Error: " + runner.GetError());
 
             runner.ClearError();
@@ -167,21 +115,21 @@ public class QueryConsole {
         int selectedOption = -1;
 
         while (isContinue) {
+            printMenu();
+
             System.out.print("Please select an option (1,2,...): ");
             chosenOption = userIn.nextLine().trim();
             System.out.println();
 
             try {
-                int chosenInt = Integer.parseInt(chosenOption);
+                selectedOption = Integer.parseInt(chosenOption);
 
-                if (chosenInt == MENU_OPTION.query.ordinal()) {
+                if (selectedOption == MENU_OPTION.query.ordinal()) {
                     queryMenu(userIn, runner);
-
-                } else if (chosenInt == MENU_OPTION.help.ordinal()) {
+                } else if (selectedOption == MENU_OPTION.help.ordinal()) {
                     help();
-                } else if (chosenInt == MENU_OPTION.quit.ordinal()) {
+                } else if (selectedOption == MENU_OPTION.quit.ordinal()) {
                     isContinue = false;
-
                 }
             } catch (Exception e) {
                 continue;
@@ -202,12 +150,14 @@ public class QueryConsole {
         while (
             !(selectedQuery >= 0 && selectedQuery < runner.GetTotalQueries())
         ) {
+            System.out.print("Select a query (0, 1...): ");
             String input = userIn.nextLine().trim();
 
             try {
                 selectedQuery = Integer.parseInt(input);
                 handleQuery(userIn, runner, selectedQuery);
             } catch (Exception e) {
+                System.out.println(e.getMessage());
                 selectedQuery = -1;
             }
         }
@@ -221,6 +171,8 @@ public class QueryConsole {
         String[] params = new String[paramCount];
 
         if (runner.isParameterQuery(selectedQuery)) {
+            System.out.println("This query requires parameters to run.");
+
             for (int i = 0; i < paramCount; i++) {
                 String paramText = runner.GetParamText(selectedQuery, i);
 
@@ -239,13 +191,18 @@ public class QueryConsole {
     public static void executeQuery(
             QueryRunner runner, int queryChoice, String[] params) {
 
-        runner.ExecuteQuery(queryChoice, params);
+        if (runner.ExecuteQuery(queryChoice, params)) {
+            printTable(runner);
+        }
+
     }
 
     public static void executeUpdate(
             QueryRunner runner, int queryChoice, String[] params) {
 
-        runner.ExecuteUpdate(queryChoice, params);
+        if (runner.ExecuteUpdate(queryChoice, params)) {
+            printTable(runner);
+        }
     }
 
     public static void printMenu() {
@@ -276,17 +233,63 @@ public class QueryConsole {
         System.out.println();
     }
 
+    public static void printTable(QueryRunner runner) {
+        ArrayList<Integer> querySize = new ArrayList<>();
+        String[] headers = runner.GetQueryHeaders();
+        String[][] data = runner.GetQueryData();
+
+        // Get the max values of each field.
+        for (String el : runner.GetQueryHeaders()) {
+            querySize.add(el.length());
+        }
+
+        for (int row = 0; row < data.length; row++) {
+            for (int col = 0; col < data[row].length; col++) {
+                int currentSize = data[row][col].length();
+                int storedSize = querySize.get(col);
+
+                if (storedSize < currentSize) {
+                    querySize.set(col, currentSize);
+                }
+            }
+        }
+
+        // Print header
+        for (int i = 0; i < headers.length; i++) {
+            System.out.printf("%"+querySize.get(i)+"s\t", headers[i]);
+        }
+        System.out.println();
+
+        // Print body
+        for (int row = 0; row < data.length; row++) {
+            for (int col = 0; col < data[row].length; col++) {
+                System.out.printf("%"+querySize.get(col)+"s\t", data[row][col]);
+            }
+
+            System.out.println();
+        }
+        System.out.println();
+    }
+
     public static void greeting() {
         System.out.println("Welcome to the Query Console tool");
-        System.out.println("TODO greeting");
+        System.out.println("This is a tool to connect to a database and use ");
+        System.out.println("a series of commands to ");
     }
 
     public static void farewell() {
-        System.out.println("TODO farewell");
-
+        System.out.println("Thank you for using the query console program!");
     }
 
     public static void help() {
-        System.out.println("TODO help");
+        System.out.println("-".repeat(15));
+        System.out.println("Help");
+        System.out.println("-".repeat(15));
+        System.out.println("\nThe query console program is designed to handle");
+        System.out.println("preselected queries that have been added to the");
+        System.out.println("ui.");
+        System.out.println("");
+        System.out.println("-".repeat(15));
+        System.out.println();
     }
 }
