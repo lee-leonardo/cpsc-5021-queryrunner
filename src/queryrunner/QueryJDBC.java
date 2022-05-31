@@ -71,18 +71,24 @@ public class QueryJDBC
 
             for (int i = 0; i < nParamAmount; i++)
             {
-                String parm = parms[i];
-                if (likeparms[i] == true)
-                {
-                    parm = "%" + parm + "%";
-                }
                 try
                 {
-                    int Value = Integer.parseInt(parm);
-                    preparedStatement.setInt(i + 1, Value);
-                } catch (NumberFormatException e)
+                    String parm = parms[i];
+                    if (likeparms[i])
+                    {
+                        parm = "%" + parm + "%";
+                    }
+
+                    if (parm.matches("\\d+")) {
+                        int Value = Integer.parseInt(parm);
+                        preparedStatement.setInt(i + 1, Value);
+                    // Can add others, but the jdbc doesn't do enforce it hard.
+                    } else {
+                        preparedStatement.setString(i + 1, parm);
+                    }
+                } catch (Exception e)
                 {
-                    preparedStatement.setString(i + 1, parm);
+                    System.out.println(e.getMessage());
                 }
             }
 
