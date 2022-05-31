@@ -12,6 +12,11 @@ public class QueryConsole {
         help,
         quit;
 
+        /**
+         * To get the ordinal
+         * @param value enum string value that maps to the ordinal
+         * @return the enum ordinal value or -1
+         */
         public static int ordinalOf(String value) {
             if (!isValid(value)) {
                 return -1;
@@ -20,10 +25,24 @@ public class QueryConsole {
             return MENU_OPTION.valueOf(value).ordinal();
         }
 
+        /**
+         * To get menu option from ordinal
+         * @param value the ordinal requested
+         * @return the ordinal, else quit
+         */
         public static MENU_OPTION fromOrdinal(int value) {
+            if (value > MENU_OPTION.quit.ordinal()) {
+                return MENU_OPTION.quit;
+            }
+
             return MENU_OPTION.values()[value];
         }
 
+        /**
+         * to check if a menu option is valid
+         * @param value the string to check
+         * @return whether it is a menu option
+         */
         public static boolean isValid(String value) {
             try {
                 MENU_OPTION.valueOf(value);
@@ -33,15 +52,25 @@ public class QueryConsole {
             }
         }
 
+        /**
+         * to check if a ordinal value is valid
+         * @param value the int to check
+         * @return whether it is a menu option
+         */
         public static boolean isValid(int value) {
             return value >= 0 && value < MENU_OPTION.values().length;
         }
     }
 
+    /**
+     * The driver
+     * @param args cli args
+     * @param runner the runner class that handles the connection to the db.
+     */
     public static void main(String[] args, QueryRunner runner) {
-        int menuOption = -1;
-        int connectionAttempts = 0;
-        boolean notConnected = false;
+        int menuOption = -1;            // enum ordinal
+        int connectionAttempts = 0;     // boilerplate
+        boolean notConnected = false;   // loop condition
 
         Scanner userIn = new Scanner(System.in);
 
@@ -80,6 +109,12 @@ public class QueryConsole {
         farewell();
     }
 
+    /**
+     * Handles the connection cli interface
+     * @param userIn user input
+     * @param runner jdbc connection
+     * @return whether connected or not
+     */
     public static boolean connectPrompt(Scanner userIn, QueryRunner runner) {
         String host, user, pass, database;
 
@@ -109,6 +144,12 @@ public class QueryConsole {
         return true;
     }
 
+    /**
+     * displays and handles menu
+     * @param userIn user input
+     * @param runner jdbc connection
+     * @return menu option for quitting and etc.
+     */
     public static int menu(Scanner userIn, QueryRunner runner) {
         boolean isContinue = true;
         String chosenOption;
@@ -139,10 +180,20 @@ public class QueryConsole {
         return selectedOption;
     }
 
+    /**
+     * Checks whether to continue the program or not
+     * @param option ordinal
+     * @return continue or quit
+     */
     public static boolean isContinue(int option) {
         return MENU_OPTION.quit.ordinal() != option;
     }
 
+    /**
+     * displays menu and receives input
+     * @param userIn user input
+     * @param runner jdbc driver
+     */
     public static void queryMenu(Scanner userIn, QueryRunner runner) {
         int selectedQuery = -1;
         printQueryList(runner);
@@ -163,6 +214,13 @@ public class QueryConsole {
         }
     }
 
+    /**
+     * run the query and selects the types of expected outcome
+     * captures user input or parameters
+     * @param userIn user input
+     * @param runner jdbc connection
+     * @param selectedQuery the array index for the query selected
+     */
     public static void handleQuery(
             Scanner userIn,
             QueryRunner runner,
@@ -188,15 +246,26 @@ public class QueryConsole {
         }
     }
 
+    /**
+     * if the query runs successfully, prints the result
+     * @param runner query runner
+     * @param queryChoice query to run
+     * @param params parameters to run in query
+     */
     public static void executeQuery(
             QueryRunner runner, int queryChoice, String[] params) {
 
         if (runner.ExecuteQuery(queryChoice, params)) {
             printTable(runner);
         }
-
     }
 
+    /**
+     * if the update or insert runs successfully, prints the result
+     * @param runner query runner
+     * @param queryChoice query to run
+     * @param params parameters to run in query
+     */
     public static void executeUpdate(
             QueryRunner runner, int queryChoice, String[] params) {
 
@@ -205,6 +274,9 @@ public class QueryConsole {
         }
     }
 
+    /**
+     * Prints the menu options
+     */
     public static void printMenu() {
         System.out.println("-".repeat(15));
         System.out.println("Menu");
@@ -218,6 +290,10 @@ public class QueryConsole {
         System.out.println();
     }
 
+    /**
+     * retrieves the query list and prints it to the console.
+     * @param runner jdbc connection
+     */
     public static void printQueryList(QueryRunner runner) {
         System.out.println("-".repeat(15));
         System.out.println("Queries");
@@ -233,6 +309,10 @@ public class QueryConsole {
         System.out.println();
     }
 
+    /**
+     * Prints the resultant table from the sql results
+     * @param runner jdbc connection
+     */
     public static void printTable(QueryRunner runner) {
         ArrayList<Integer> querySize = new ArrayList<>();
         String[] headers = runner.GetQueryHeaders();
@@ -271,16 +351,25 @@ public class QueryConsole {
         System.out.println();
     }
 
+    /**
+     * console front matter
+     */
     public static void greeting() {
         System.out.println("Welcome to the Query Console tool");
         System.out.println("This is a tool to connect to a database and use ");
         System.out.println("a series of commands to ");
     }
 
+    /**
+     * console back matter
+     */
     public static void farewell() {
         System.out.println("Thank you for using the query console program!");
     }
 
+    /**
+     * help menu
+     */
     public static void help() {
         System.out.println("-".repeat(15));
         System.out.println("Help");
