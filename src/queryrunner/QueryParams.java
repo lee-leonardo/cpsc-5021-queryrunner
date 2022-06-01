@@ -4,6 +4,8 @@ import java.util.TreeMap;
 
 /**
  * Class to abstract the logic for handling the params better.
+ *
+ * @author Group 5
  */
 public class QueryParams {
     TreeMap<String, String> paramName;  // holds alist
