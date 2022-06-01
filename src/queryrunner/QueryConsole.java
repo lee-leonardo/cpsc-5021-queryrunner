@@ -257,6 +257,10 @@ public class QueryConsole {
 
         if (runner.ExecuteQuery(queryChoice, params)) {
             printTable(runner);
+        }  else if (!runner.GetError().isBlank()) {
+            System.out.println("Error: " + runner.GetError());
+
+            runner.ClearError();
         }
     }
 
@@ -271,6 +275,10 @@ public class QueryConsole {
 
         if (runner.ExecuteUpdate(queryChoice, params)) {
             printTable(runner);
+        } else if (!runner.GetError().isBlank()) {
+            System.out.println("Error: " + runner.GetError());
+
+            runner.ClearError();
         }
     }
 
