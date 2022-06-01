@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 /**
  * CLI tool we've been building in all of our other classes.
+ * @author Leonardo Lee
  */
 public class QueryConsole {
     public enum MENU_OPTION {

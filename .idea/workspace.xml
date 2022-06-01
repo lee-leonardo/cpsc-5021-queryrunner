@@ -7,11 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43a5a5c9-d7d7-4a89-9b6a-55e583e6a59d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/image5.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/image5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/img3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img4.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/img4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/queryrunner/QueryFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/queryrunner/QueryFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/queryrunner/QueryRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/queryrunner/QueryRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/queryrunner/QueryConsole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/queryrunner/QueryConsole.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +104,7 @@
       <workItem from="1653718594930" duration="22782000" />
       <workItem from="1654044712008" duration="233000" />
       <workItem from="1654045022407" duration="3208000" />
-      <workItem from="1654052712611" duration="1520000" />
+      <workItem from="1654052712611" duration="2831000" />
     </task>
     <servers />
   </component>
