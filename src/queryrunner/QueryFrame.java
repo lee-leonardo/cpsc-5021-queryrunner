@@ -8,11 +8,14 @@ package queryrunner;
 
 
 /**
+ *
  * @author mckeem
  */
 
 import java.awt.Color;
 import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
+import java.awt.*;
 
 public class QueryFrame extends javax.swing.JFrame
 {
@@ -41,8 +44,11 @@ public class QueryFrame extends javax.swing.JFrame
         jBtnRunQuery.setEnabled(false);
 
         jLabel14.setText(m_queryrunner.GetProjectTeamApplication());
+        jLabel14.setForeground(Color.WHITE);
     }
 
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,6 +93,8 @@ public class QueryFrame extends javax.swing.JFrame
         jBtnRunQuery = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
+//        jLabelImg1 = new JLabel(new ImageIcon("C:\\Users\\maste\\Documents\\cpsc-5021-queryrunner\\src\\img2.png"));
+        jLabelImg2 = new JLabel(new ImageIcon("C:\\Users\\maste\\Documents\\forkedrepo\\cpsc-5021-queryrunner\\src\\image5.png"));
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,42 +131,50 @@ public class QueryFrame extends javax.swing.JFrame
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("avx");
+        jLabel1.setForeground(Color.WHITE);
         jLabel1.setToolTipText("");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 29, 132, -1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("aaa");
+        jLabel2.setForeground(Color.WHITE);
         jLabel2.setToolTipText("");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 29, 120, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("aaa");
+        jLabel3.setForeground(Color.WHITE);
         jLabel3.setToolTipText("");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 29, 115, -1));
 
         jLabel4.setBackground(new java.awt.Color(204, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("aaa");
+        jLabel4.setForeground(Color.WHITE);
         jLabel4.setToolTipText("");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 65, 132, 18));
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("yyy");
+        jLabel9.setForeground(Color.WHITE);
         jLabel9.setToolTipText("");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 67, 110, -1));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("rrr");
+        jLabel10.setForeground(Color.WHITE);
         jLabel10.setToolTipText("");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(651, 67, 116, -1));
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("iii");
+        jLabel11.setForeground(Color.WHITE);
         jLabel11.setToolTipText("");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 102, 123, -1));
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("ooo");
+        jLabel12.setForeground(Color.WHITE);
         jLabel12.setToolTipText("");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 102, 100, -1));
         jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 64, 188, -1));
@@ -181,22 +197,25 @@ public class QueryFrame extends javax.swing.JFrame
         getContentPane().add(jComboBoxQuery, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 120, -1));
 
         jLabel5.setText("Database");
+        jLabel5.setForeground(Color.WHITE);
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 90, 10));
 
         jLabel6.setText("Hostname");
+        jLabel6.setForeground(Color.WHITE);
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 90, -1));
 
         jLabel7.setText("User");
+        jLabel7.setForeground(Color.WHITE);
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 100, -1));
 
         jLabel8.setText("Password");
+        jLabel8.setForeground(Color.WHITE);
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 80, -1));
 
         jConnectButton.setText("Connect");
-        jConnectButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jConnectButton.setForeground(new Color(20, 24, 97));
+        jConnectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
@@ -217,11 +236,16 @@ public class QueryFrame extends javax.swing.JFrame
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 120, -1));
 
         jLabel13.setText("Output");
+        jLabel13.setForeground(Color.WHITE);
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setText("VVV");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 180, -1));
+
+        // add images to pane
+//        getContentPane().add(jLabelImg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 100, 100));
+         getContentPane().add(jLabelImg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0,-1,-1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -292,6 +316,8 @@ public class QueryFrame extends javax.swing.JFrame
                 m_parmlabels[i].setText(m_queryrunner.GetParamText(m_queryChoice, i));
                 m_textvals[i].setVisible(true);
                 m_textvals[i].setText("");
+                m_textvals[i].setForeground(Color.WHITE);
+
             }
 
             for (int i = nAmt; i < 8; i++)
@@ -365,6 +391,21 @@ public class QueryFrame extends javax.swing.JFrame
                 }
                 m_jTable = new JTable(allData, headers);
 
+               //alternating colors?
+                m_jTable = new JTable(allData, headers) {
+                    public Component prepareRenderer(TableCellRenderer render, int r, int c) {
+                        Component component = super.prepareRenderer(render, r, c);
+                        Color alternateColor = new Color(252, 242, 206);
+                        Color wColor = Color.WHITE;
+                        if (!component.getBackground().equals(getSelectionBackground())) {
+                            Color background = (r % 2 == 0 ? alternateColor : wColor);
+                            component.setBackground(background);
+                            background = null;
+                        }
+                        return component;
+                    }
+                };
+
                 m_jTable.setBounds(100, 100, 100, 80);
                 Color ivory = new Color(255, 255, 208);
                 m_jTable.setOpaque(false);
@@ -384,6 +425,8 @@ public class QueryFrame extends javax.swing.JFrame
     private javax.swing.JButton jConnectButton;
     private javax.swing.JButton jBtnRunQuery;
     private javax.swing.JComboBox<String> jComboBoxQuery;
+//    private javax.swing.JLabel jLabelImg1;
+    private javax.swing.JLabel jLabelImg2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
