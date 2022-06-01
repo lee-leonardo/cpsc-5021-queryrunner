@@ -93,8 +93,7 @@ public class QueryFrame extends javax.swing.JFrame
         jBtnRunQuery = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
-//        jLabelImg1 = new JLabel(new ImageIcon("C:\\Users\\maste\\Documents\\cpsc-5021-queryrunner\\src\\img2.png"));
-        jLabelImg2 = new JLabel(new ImageIcon("C:\\Users\\maste\\Documents\\forkedrepo\\cpsc-5021-queryrunner\\src\\image5.png"));
+        jLabelImg2 = new JLabel(new ImageIcon(imageFilePath));
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -242,9 +241,6 @@ public class QueryFrame extends javax.swing.JFrame
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setText("VVV");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 180, -1));
-
-        // add images to pane
-//        getContentPane().add(jLabelImg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 100, 100));
          getContentPane().add(jLabelImg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0,-1,-1));
 
         pack();
@@ -425,7 +421,6 @@ public class QueryFrame extends javax.swing.JFrame
     private javax.swing.JButton jConnectButton;
     private javax.swing.JButton jBtnRunQuery;
     private javax.swing.JComboBox<String> jComboBoxQuery;
-//    private javax.swing.JLabel jLabelImg1;
     private javax.swing.JLabel jLabelImg2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -461,12 +456,16 @@ public class QueryFrame extends javax.swing.JFrame
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
-
     private final JLabel[] m_parmlabels;
     private JTextField[] m_textvals;
     private QueryRunner m_queryrunner;
     private javax.swing.JTable m_jTable;
     JScrollPane m_scrollPane;
     private int m_queryChoice = 0; // This is the default query that was selected
+
+    ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+
+    final private String imageFilePath = classloader
+            .getResource("image5.png").getFile();
 
 }
