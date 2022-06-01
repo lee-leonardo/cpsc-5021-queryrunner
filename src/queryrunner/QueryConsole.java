@@ -136,6 +136,7 @@ public class QueryConsole {
 
         if (!runner.GetError().isBlank()) {
             System.out.println("Error: " + runner.GetError());
+            System.out.println();
 
             runner.ClearError();
             return false;
@@ -259,6 +260,7 @@ public class QueryConsole {
             printTable(runner);
         }  else if (!runner.GetError().isBlank()) {
             System.out.println("Error: " + runner.GetError());
+            System.out.println();
 
             runner.ClearError();
         }
@@ -277,6 +279,7 @@ public class QueryConsole {
             printTable(runner);
         } else if (!runner.GetError().isBlank()) {
             System.out.println("Error: " + runner.GetError());
+            System.out.println();
 
             runner.ClearError();
         }
