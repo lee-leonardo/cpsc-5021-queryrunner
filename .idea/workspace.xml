@@ -71,7 +71,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QueryRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="QueryRunner" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="queryrunner.QueryRunner" />
       <module name="QueryRunner" />
       <extension name="coverage">
@@ -88,11 +88,6 @@
       <item itemvalue="Application.Console" />
       <item itemvalue="Application.QueryRunner" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.QueryRunner" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
